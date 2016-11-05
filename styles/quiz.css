@@ -1,0 +1,12 @@
+/*.activeCard doubles the black border size and makes the card background color yellow*/
+
+.activeCard {
+	border: solid black 2px;
+	background-color: yellow;
+}
+
+/*.addBlack adds a black border around each card*/
+
+.addBlack {
+	border: solid black 1px;
+}
