@@ -17,10 +17,28 @@ function makeCarCards (inventory) {
 									 carLot.innerHTML += `<div class="divObjects">${carCard}</div>`;
 									 let carID = document.getElementById(`car--${index}`);
 	});
-
 }
 
+Array.from(carLot.children).forEach(function(item){
+	item.addEventListener("click", function(event){
+		if(selectedCar !== null){
+		selectedCar.classList.remove("activeCard");
+		}
+		selectedCar = item;
+		console.log("selectedCar", selectedCar);
+		selectedCar.classList.add("activeCard");
+		userText = selectedCar.getElementsByTagName('p')[0];
+		userInput.focus();
 
+	});
+});
+
+userInput.addEventListener("keyup", function(event){
+	userText.innerHTML = userInput.value;
+		if(event.keyCode === 13){
+			userInput.value = "";
+		}
+});
 
 
 
