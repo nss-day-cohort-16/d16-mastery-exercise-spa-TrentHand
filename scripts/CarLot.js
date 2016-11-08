@@ -12,7 +12,6 @@ var CarLot = (function (){
 			inventoryLoader.addEventListener("load", function() {
 				 inventory = JSON.parse(this.responseText).cars;
 				 callback(inventory);
-				 console.log("inventory = ", inventory);
 			});
 		}
 	};
