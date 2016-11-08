@@ -1,7 +1,7 @@
 "use strict";
 var userInput = document.getElementById("userInput");
 var clearBTN = document.getElementById("clearBTN");
-
+var userText = "";
 
 
 var CarLot = (function(oldCars){
@@ -15,7 +15,7 @@ var CarLot = (function(oldCars){
 			item.addEventListener("click", function(event){
 				CarLot.resetClass(DOMcars);
 				CarLot.switchClass(item);
-				findP(item);
+				oldCars.findParagraph(item);
 				document.getElementById("userInput").focus();
 				});
 			});
@@ -23,26 +23,26 @@ var CarLot = (function(oldCars){
 
 
 		// console.log("userText", userText);
+
+	oldCars.findParagraph = function(item){
+		userText = item.querySelector(".selected");
+		userInput.addEventListener("keyup", oldCars.editText);
+	};
+
+		clearBTN.addEventListener("click", function(event){
+			oldCars.clearInput();
+		});
+
+
+		oldCars.clearInput = function() {
+			userInput.value = "";
+		};
+
+		oldCars.editText = function() {
+			userText.innerHTML = userInput.value;
+			if(event.keyCode === 13){
+				oldCars.clearInput();
+			}
+		};
 	return oldCars;
 })(CarLot || {});
-
-function findP(item){
-	var userText = item.querySelector(".selected");
-	console.log("userText = ", userText);
-	userInput.addEventListener("keyup", function(event){
-	userText.innerHTML = userInput.value;
-		if(event.keyCode === 13){
-			clearInput();
-		}
-	});
-
-}
-
-	clearBTN.addEventListener("click", function(event){
-		clearInput();
-	});
-
-
-	function clearInput() {
-		userInput.value = "";
-	}
